@@ -42,13 +42,13 @@ else:
     print(response.text) # print the .text part of the bot's response 
 
 
-# def main():
-#     print("Hello from aiagent!")
+def main():
+    print("Hello from aiagent!")
 
 
 
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
 
 
