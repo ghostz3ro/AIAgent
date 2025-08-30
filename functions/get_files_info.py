@@ -1,18 +1,19 @@
 import os
 
 def get_files_info(working_directory, directory="."):
-    full_path = os.path.join(working_directory, directory)
-    absolute_path = os.path.abspath(full_path)
-    directory_list = os.listdir(full_path)
-    
-
-    if "AIAgent/" not in absolute_path:
+    abs_working_directory = os.path.abspath(working_directory)
+    full_path = os.path.abspath(os.path.join(working_directory, directory))
+        
+    if os.path.commonpath([abs_working_directory, full_path]) != abs_working_directory:
         return f'Error: Cannot list "{directory}" as it is outside the permitted working directory'
     
-    if os.path.isdir(directory) != True:
+    if not os.path.isdir(directory):
         return f'Error: "{directory}" is not a directory'
-    
+        
+    # build the list
     dir_list_prep = [] # initialize an empty list to create the required format
+    directory_list = os.listdir(full_path)
+    
     for item in directory_list:
         item_path = os.path.join(full_path, item)  # full path for checks
         
@@ -24,5 +25,5 @@ def get_files_info(working_directory, directory="."):
     # print(absolute_path) # debug prints
     # print("\n".join(directory_list)) # debug prints
     print("\n".join(dir_list_prep))
-    # return "\n".join(dir_list_prep)
-    # return "\n".join(dir_list_prep)
+    # return ("\n".join(dir_list_prep))
+
