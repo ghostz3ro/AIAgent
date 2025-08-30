@@ -30,7 +30,7 @@ response = client.models.generate_content(model="gemini-2.0-flash-001", contents
 prompt_tokens = response.usage_metadata.prompt_token_count
 response_tokens = response.usage_metadata.candidates_token_count
 
-if "--verbose" in sys.argv:#len(sys.argv) > 2 and str(sys.argv[2]) == "--verbose": #if --verbose flag exists, print a lot of info, otherwise just the response.
+if "--verbose" in sys.argv: #if --verbose flag exists in the prompt, print a lot of info, otherwise just the response.
     
     print(f"User prompt: {user_prompt}\n")
     print(response.text) # print the .text part of the bot's response 
